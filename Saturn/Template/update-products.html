@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+{% block title %}Customize Product{% endblock %}
+{% block body %}
+
+<form class="container text-center mt-5" method="POST" enctype="multipart/form-data" style="padding-top:50px;" >
+    {% csrf_token %}
+    <div class="mt-10">
+        <input type="text" name="name" placeholder="Name"
+               onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
+               class="single-input" value="{{product.name}}">
+    </div>
+    <div class="mt-10">
+        <input type="text" name="price" placeholder="Price" onfocus="this.placeholder = ''"
+               onblur="this.placeholder = 'Last Name'" required class="single-input"
+               value="{{product.price}}">
+    </div>
+    <div class="mt-2">
+        <input type="text" name="description" placeholder="Description" onfocus="this.placeholder = ''"
+               onblur="this.placeholder = 'Last Name'" required class="single-input" style="height: 100px"
+               value="{{product.description}}">
+        <img src="{{product.product_image.url}}" height="200px">
+        <div class="mt-10">
+            <input type="file" name="image" id="customFile" onfocus="this.placeholder = ''"
+                   onblur="this.placeholder = 'Last Name'" required class="single-input"
+                   />
+        </div>
+        <div class="col-12 mt-2">
+            <button type="submit" class="genric-btn primary radius">Save</button>
+        </div>
+</form>
+
+{% endblock %}
